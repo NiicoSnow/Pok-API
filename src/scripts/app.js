@@ -85,4 +85,35 @@ function getStatColor(value) {
     return '#ef4444'; // rouge
 }
 
+import { gsap } from "gsap";
+
+const img = document.getElementById('movingImage');
+
+img.addEventListener('click', () => {
+  const screenWidth = window.innerWidth;
+
+  gsap.to(img, {
+    duration: 0.2,
+    y: -50,
+    ease: "power.in",
+    onComplete: () => {
+        gsap.to(img, {
+            duration: 0.5,
+            y: 0,
+            ease: "power1.int",
+            onComplete: () => {
+                gsap.to(img, {
+                    duration: 1,
+                    x: screenWidth + 200,
+                    ease: "power4.in",
+                    onComplete: () => {
+                        
+                    }
+                  });
+            }
+          });
+    }
+  });
+});
+
 
