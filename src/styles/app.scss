@@ -60,3 +60,19 @@ ul {
     list-style-type: none;
     padding-left: 0;
 }
+.stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.stats-table th,
+.stats-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+.stats-table th {
+    background-color: #f0f0f0;
+}

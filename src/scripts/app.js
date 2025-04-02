@@ -32,14 +32,22 @@ document.getElementById('pokemonForm').addEventListener('submit', function(e) {
                     <p><span>Types :</span> ${data.types.map(t => t.type.name).join(', ')}</p>
                     <div class="pokemon-stats">
                         <h3>Statistiques :</h3>
-                        <ul>
-                            <li><span>HP :</span> ${stats.hp}</li>
-                            <li><span>Attaque :</span> ${stats.attack}</li>
-                            <li><span>Défense :</span> ${stats.defense}</li>
-                            <li><span>Attaque Spéciale :</span> ${stats['special-attack']}</li>
-                            <li><span>Défense Spéciale :</span> ${stats['special-defense']}</li>
-                            <li><span>Vitesse :</span> ${stats.speed}</li>
-                        </ul>
+                        <table class="stats-table">
+                            <thead>
+                                <tr>
+                                    <th>Stat</th>
+                                    <th>Valeur</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>HP</td><td>${stats.hp}</td></tr>
+                                <tr><td>Attaque</td><td>${stats.attack}</td></tr>
+                                <tr><td>Défense</td><td>${stats.defense}</td></tr>
+                                <tr><td>Attaque Spéciale</td><td>${stats['special-attack']}</td></tr>
+                                <tr><td>Défense Spéciale</td><td>${stats['special-defense']}</td></tr>
+                                <tr><td>Vitesse</td><td>${stats.speed}</td></tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             `;
