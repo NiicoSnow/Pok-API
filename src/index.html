@@ -6,15 +6,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <meta name="description" content="">
-  <!-- Meta Partage -->
-  <!-- Favicon -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <link rel="stylesheet" href="styles/app.css">
-
   <script src="scripts/app.js" defer></script>
 </head>
 <body>
+  <div class="container">
+    <h1 class="title">Chercher un Pokémon</h1>
 
+    <form id="pokemonForm">
+        <input id="pokemonInput" type="text" placeholder="Nom ou ID du Pokémon" class="input-text" required>
+        <button type="submit" class="button-submit">
+            Rechercher
+        </button>
+    </form>
+
+    <div id="result" class="result"></div>
+</div>
 </body>
 </html>
