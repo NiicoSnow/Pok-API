@@ -98,7 +98,7 @@ img.addEventListener('click', () => {
     ease: "power.in",
     onComplete: () => {
         gsap.to(img, {
-            duration: 0.5,
+            duration: 0.4,
             y: 0,
             ease: "power1.int",
             onComplete: () => {
