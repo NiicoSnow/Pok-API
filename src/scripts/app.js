@@ -23,8 +23,27 @@ document.getElementById('pokemonForm').addEventListener('submit', function(e) {
                 return acc;
             }, {});
 
+            const type = data.types[0].type.name;
+            const typeClass = `type-${type}`;
+
+            // Génère une ligne de tableau avec barre colorée
+            const statRow = (label, value) => {
+                return `
+                    <tr>
+                        <td>${label}</td>
+                        <td>
+                            <div class="stat-bar-container">
+                                <div class="stat-bar" style="width: ${value > 100 ? 100 : value}%; background-color: ${getStatColor(value)};">
+                                    ${value}
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            };
+
             result.innerHTML = `
-                <div class="pokemon-card">
+                <div class="pokemon-card ${typeClass}">
                     <h2 class="pokemon-name">${data.name} (#${data.id})</h2>
                     <img src="${data.sprites.front_default}" alt="${data.name}">
                     <p><span>Taille :</span> ${data.height / 10} m</p>
@@ -40,12 +59,12 @@ document.getElementById('pokemonForm').addEventListener('submit', function(e) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td>HP</td><td>${stats.hp}</td></tr>
-                                <tr><td>Attaque</td><td>${stats.attack}</td></tr>
-                                <tr><td>Défense</td><td>${stats.defense}</td></tr>
-                                <tr><td>Attaque Spéciale</td><td>${stats['special-attack']}</td></tr>
-                                <tr><td>Défense Spéciale</td><td>${stats['special-defense']}</td></tr>
-                                <tr><td>Vitesse</td><td>${stats.speed}</td></tr>
+                                ${statRow('HP', stats.hp)}
+                                ${statRow('Attaque', stats.attack)}
+                                ${statRow('Défense', stats.defense)}
+                                ${statRow('Attaque Spéciale', stats['special-attack'])}
+                                ${statRow('Défense Spéciale', stats['special-defense'])}
+                                ${statRow('Vitesse', stats.speed)}
                             </tbody>
                         </table>
                     </div>
@@ -56,5 +75,14 @@ document.getElementById('pokemonForm').addEventListener('submit', function(e) {
             result.innerHTML = `<div class="error-message">${err.message}</div>`;
         });
 });
+
+// Fonction qui retourne une couleur selon la valeur de la statistique
+function getStatColor(value) {
+    if (value >= 120) return '#4ade80'; // vert vif
+    if (value >= 90) return '#a3e635';  // vert clair
+    if (value >= 60) return '#facc15';  // jaune
+    if (value >= 40) return '#f97316';  // orange
+    return '#ef4444'; // rouge
+}
 
 
