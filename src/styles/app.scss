@@ -35,6 +35,9 @@ body {
     margin-top: 0.5rem;
     cursor: pointer;
 }
+.button-submit:hover {
+    background-color: #0060fa;
+}
 
 .result {
     margin-top: 1rem;
@@ -112,7 +115,8 @@ ul {
 }
 .gruikui {
     position: fixed;
-    bottom: 20px;
+    bottom: 0px;
+    left:10px;
     width: 10%;
     text-align: center;
     z-index: 1000;
